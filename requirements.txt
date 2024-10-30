@@ -3,3 +3,4 @@ pydantic
 PyPDF2
 pymongo
 uvicorn
+openai

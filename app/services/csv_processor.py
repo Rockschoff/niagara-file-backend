@@ -13,7 +13,7 @@ async def process_csv(file_stream, document_name=""):
         rows = list(reader)
         header = rows[0]  # The header row
         total_rows = len(rows)
-
+        
         # Chunks are created by taking 25 consecutive rows, including the header each time.
         chunks = [rows[i:i + 25] for i in range(0, total_rows, 25)]
         tasks = []

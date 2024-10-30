@@ -7,8 +7,27 @@ from app.services.csv_processor import process_csv
 from app.services.xlsx_processor import process_xlsx
 from app.services.mongo_helpers import check_if_document_name_exists
 from fastapi import File
+from pydantic import BaseModel
 
 router = APIRouter()
+
+class FileCheckRequest(BaseModel):
+    file_name: str
+
+@router.post("/check-file-exists")
+async def check_file_exists(request: FileCheckRequest):
+    file_name = request.file_name
+
+    try:
+        if check_if_document_name_exists(file_name):
+            return JSONResponse(status_code=200, content={"resposne": True})
+        else:
+            return JSONResponse(status_code=200, content={"resposne": False})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error in check if {file_name} exists: {str(e)}")
+
+
+
 
 @router.post("/upload-file/")
 async def upload_file(file: UploadFile = File(...)):
