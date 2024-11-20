@@ -6,6 +6,7 @@ from app.models.vectorStoreItem import VectorStoreItem
 from app.services.ai_helpers import get_contextual_chunk, get_embeddings
 
 async def process_pdf(file_stream, document_name=""):
+    print(document_name)
     try:
         reader = PyPDF2.PdfReader(file_stream)
         document_id = uuid4()

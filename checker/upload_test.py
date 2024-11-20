@@ -94,5 +94,6 @@ def main_sync_loop():
         print("Sync cycle complete. Waiting 10 seconds before next cycle.\n")
         time.sleep(10)
 
+
 if __name__ == "__main__":
     main_sync_loop()
