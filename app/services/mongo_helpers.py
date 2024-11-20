@@ -1,10 +1,11 @@
 from pymongo import MongoClient
 from app.models.vectorStoreItem import VectorStoreItem
+from checker.config import MONGO_DB_DATABASE_NAME, MONGO_DB_URI, MONGO_DB_COLLECTION_NAME
 import os
 
-client = MongoClient(os.getenv("MONGO_DB_URI"))
-db = client[os.getenv("MONGO_DB_DATABASE_NAME")]
-collection = db[os.getenv("MONGO_DB_COLLECTION_NAME")]
+client = MongoClient(MONGO_DB_URI)
+db = client[MONGO_DB_DATABASE_NAME]
+collection = db[MONGO_DB_COLLECTION_NAME]
 
 def check_if_document_name_exists(document_name: str) -> bool:
     result = collection.find_one({"document_name": document_name})

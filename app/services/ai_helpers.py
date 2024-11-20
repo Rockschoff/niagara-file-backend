@@ -1,6 +1,7 @@
 from openai import OpenAI
 from typing import List
-client = OpenAI()
+from checker.config import OPENAI_API_KEY
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 
@@ -23,7 +24,7 @@ async def get_contextual_chunk(context , chunk)->str:
 
     prompt = f"""<context>{context}</context>
     <chunk>{chunk}</chunk>
-    Please give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else."""
+    Please give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.Inlcude key words that will help the Food Safety and Quality Professional Search for the chunk efficiently"""
 
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
