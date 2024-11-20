@@ -3,7 +3,7 @@ import requests
 import time
 import boto3
 from pymongo import MongoClient
-from checker.config import MONGO_DB_DATABASE_NAME, MONGO_DB_URI, MONGO_DB_COLLECTION_NAME
+from config import MONGO_DB_DATABASE_NAME, MONGO_DB_URI, MONGO_DB_COLLECTION_NAME
 from functools import lru_cache
 
 # Initialize MongoDB and S3 clients
