@@ -7,3 +7,4 @@ openai
 pandas
 numpy
 python-multipart
+pycryptodome
