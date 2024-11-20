@@ -95,7 +95,7 @@ def upload_to_fastapi(file_path, filename):
 
         with open(file_path, "rb") as file:
             files = {"file": (filename, file, mime_type)}
-            response = requests.post(url, files=files, timeout=30)
+            response = requests.post(url, files=files)
             if response.status_code == 200:
                 print(f"Uploaded {filename} successfully.")
             else:
